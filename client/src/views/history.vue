@@ -52,19 +52,23 @@ async function handleDeleteItem(itemId, productName) {
 
             <main v-if="!isLoading" class="checkout-layout">
 
-                <div class="item-list">
+                <div v-if="store.itemInHistory.length == 0">
+                    <h1>Anda belum membeli apapun !!!</h1>
+                </div>
+
+                <div v-else class="item-list">
                     <div v-for="(item, index) in reversedHistory" :key="index" class="cart-item">
                         <div class="item-details">
                             <img :src="`${api}${item.product.imageUrl}`" alt="Product Image" class="product-image">
                             <div>
                                 <h2 class="product-name">{{ item.product.name }}</h2>
                                 <p class="product-quantity">Jumlah: {{ item.qty }}</p>
-                                <p class="product-price-each">${{ item.product.price.toLocaleString() }}</p>
+                                <p class="product-price-each">Rp {{ item.product.price.toLocaleString() }}</p>
                                 <p>Date: {{ formatDate(item.date) }}</p>
                             </div>
                         </div>
                         <div class="item-subtotal">
-                            <p>${{ item.product.price.toLocaleString() }}</p>
+                            <p>Rp {{ item.product.price * item.qty }}</p>
                             <button class="delete-btn" @click="handleDeleteItem(item._id, item.product.name)"><i
                                     class="bi bi-trash-fill"></i></button>
                         </div>
@@ -72,7 +76,7 @@ async function handleDeleteItem(itemId, productName) {
                 </div>
 
             </main>
-            
+
             <div v-else class="loading"></div>
         </div>
     </main>

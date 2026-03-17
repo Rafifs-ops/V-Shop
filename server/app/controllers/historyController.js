@@ -5,6 +5,12 @@ exports.findHistoryItem = async (req, res) => {
     const id = String(req.params.id);
 
     const history = await HistoryOrder.findOne({ user_id: id }).populate("history_items.product")
+
+    if (!history) {
+        res.json({message: 'User belum beli apapun'});
+        return;
+    }
+    
     res.send(history)
 }
 

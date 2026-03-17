@@ -52,7 +52,7 @@ async function addCart(id) {
             <div class="product-menu">
                 <div class="product-spec">
                     <h3>{{ product.name }}</h3>
-                    <h3>$ {{ product.price }}</h3>
+                    <h3>Rp {{ product.price.toLocaleString('id-ID') }}</h3>
                 </div>
                 <div class="product-feature">
                     <h3 v-on:click="addCart(product._id)"><i class="bi bi-cart-fill"></i></h3>

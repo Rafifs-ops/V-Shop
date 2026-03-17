@@ -111,11 +111,11 @@ async function handlePayment() {
                                     <div>
                                         <h2 class="product-name">{{ item.product.name }}</h2>
                                         <p class="product-quantity">Jumlah: {{ item.qty }}</p>
-                                        <p class="product-price-each">${{ item.product.price.toLocaleString() }}</p>
+                                        <p class="product-price-each">Rp {{ item.product.price }}</p>
                                     </div>
                                 </div>
                                 <div class="item-subtotal">
-                                    <p>${{ item.product.price.toLocaleString() * item.qty }}</p>
+                                    <p>Rp {{ item.product.price * item.qty }}</p>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@ async function handlePayment() {
                         <aside class="order-summary">
                             <div class="summary-row total">
                                 <h2>Total Belanja</h2>
-                                <span>$ {{ store.totalAmount }}</span>
+                                <span>Rp {{ store.totalAmount.toLocaleString('id-ID') }}</span>
                             </div>
                             <button v-if="!isLoading" class="checkout-btn" v-on:click="handlePayment">Checkout</button>
                             <button v-else class="checkout-btn" disabled>Loading...</button>

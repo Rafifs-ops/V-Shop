@@ -60,7 +60,7 @@ async function deleteItems(cartId) {
                         </div>
                         <div>
                             <button @click="deleteItems(item._id)" class="delete-btn">Delete</button>
-                            <p>$ {{ item.product.price * item.qty }}</p>
+                            <p>Rp {{ item.product.price * item.qty }}</p>
                         </div>
                     </div>
                     <RouterLink to="/checkout" class="btn-primary">Checkout</RouterLink>

@@ -9,9 +9,14 @@ export const useFetchHistory = defineStore('fetchHistory', () => {
     const store = useFetchCart();
 
     async function fetchHistory() {
-        const result = ref([]);
-        await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/history/getHistories/${user.id}`).then(e => e.json()).then(data => result.value = data);
-        itemInHistory.value = result.value.history_items;
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/history/getHistories/${user.id}`);
+        const result = await response.json();
+
+        if (result.message === "User belum beli apapun") {
+            itemInHistory.value = [];
+        } else {
+            itemInHistory.value = result.history_items;
+        }
     }
 
     // MENAMBAHKAN HISTORY KE SERVER DB
