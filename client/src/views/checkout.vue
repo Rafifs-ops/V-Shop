@@ -57,7 +57,8 @@ async function handlePayment() {
                 alert('Pembayaran berhasil !!!');
                 historyStore.addHistory();
                 store.removeCart();
-                window.location.reload();
+                store.fetchCart(); // fecth cart ulang
+                router.push({ name: 'home' });
             },
             onPending: (result) => {
                 /* Pembayaran pending */

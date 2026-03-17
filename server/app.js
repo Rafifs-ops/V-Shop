@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/img', express.static(path.join(__dirname, './public/img'))) // path for image
 
 // Connect Database
-mongoose.connect('mongodb://localhost:27017/collect_vuestore').then(() => { console.log('Database connected!') }).catch((err) => {
+mongoose.connect(process.env.MONGO_URI).then(() => { console.log('Database connected!') }).catch((err) => {
     console.log("Cannot connect to the database!", err)
     process.exit()
 })
