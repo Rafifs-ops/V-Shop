@@ -33,7 +33,7 @@ onMounted(() => {
     <div class="product-page-container">
       <div class="product-card" v-if="product">
         <div class="product-image-container">
-          <img class="product-image" :src="`http://localhost:8080${product.imageUrl}`" :alt="product.name">
+          <img class="product-image" :src="`https://v-shop-33ke.onrender.com${product.imageUrl}`" :alt="product.name">
         </div>
         <div class="product-info">
           <h1 class="product-name">{{ product.name }}</h1>
