@@ -5,7 +5,7 @@ const path = require('path')
 const app = express()
 const mongoose = require('mongoose')
 
-let corsOptions = { origin: "http://localhost:5173" } // enable cors
+let corsOptions = { origin: ["http://localhost:5173", "https://v-shop-by-rafi.netlify.app"] } // enable cors
 app.use(cors(corsOptions)) // parse request of content-type - application/json
 app.use(express.json()) // parse content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
